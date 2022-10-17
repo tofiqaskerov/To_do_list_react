@@ -21,7 +21,7 @@ function App() {
 
   }
   const completed = id =>{
-    setList(list.map(i => i.id === id.id ? { ...i, completed: !i.completed } : i))
+    setList(list.map(i => i.id === id ? { ...i, completed: !i.completed } : i))
   }
   const removeCompleted =() =>{
     setList(list.filter(item => !item.completed));
@@ -38,12 +38,14 @@ function App() {
             Add
             </button>
           </div>
-          <div className="list">
+          <div className="list"> 
             {list.map((item, index) =>
             (<div
               key={index}
-              onClick={() => completed(index.id) }
-              className="done"><h3 className={item.completed ? "line" : ""}>{item.title}</h3></div>)
+              onClick={() => 
+                completed(item.id) 
+              }
+              className="done"><h3 className={item.completed ? "line" : " "}>{item.title}</h3></div>)
             )}
           </div>
           <Stack direction="row" spacing={2}>
